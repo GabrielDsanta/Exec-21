@@ -1,54 +1,30 @@
 
 
-let choice = true
-let contador = 0
-let MaiorSalario = 0
-let AcimaDe1500 = 0
+let Nota1 = Number(prompt("Digite uma nota"))
+let Nota2 = Number(prompt("Digite uma nota"))
+let Nota3 = Number(prompt("Digite uma nota"))
 
-let filhos = []
-let wage = []
+let Letra = prompt("A -  média aritmética // P - média ponderada")
 
-while(choice){
-    filhos[contador] = Number(prompt("Quantos filhos você tem ?"))
-    wage[contador] = Number(prompt("Qual o seu salário atual ?"))
+Calculator(Letra)
 
-    if(wage[contador] > MaiorSalario){
-        MaiorSalario = wage[contador]
-    }
-    
-    if(wage[contador] > 1500){
-        AcimaDe1500++
+function Calculator(letra){
+    if(letra == "A"){
+        let mediaA = (Nota1 + Nota2 + Nota3) / 3
+        return alert(`A média Aritmética dos alunos é ${mediaA}`)
     }
 
-    choice = prompt("Deseja inserir mais dados ?")
-    if(choice == "Não"){
-        choice = false
+    if(letra == "P"){
+        Nota1 = (Nota1 / 0.5)   
+        Nota2 = (Nota2 / 0.3)
+        Nota3 = (Nota3 / 0.2)
+
+        let mediaP = (Nota1 + Nota2 + Nota3)
+
+        return alert(`A média Ponderada dos alunos é ${mediaP}`)
     }
 
-    contador++
-}
-
-Reply()
-
-
-function Reply(){
-
-    let totalWage = 0
-    let totalFilhos = 0
-    let Porcemtagem = 0
-
-    for(let index = 0; index < wage.length; index++){
-        totalWage = totalWage + wage[index] 
+    else{
+        alert("Você digitou um valor inválido dê f5 e tente novamente")
     }
-    let mediaWage = (totalWage / contador)
-
-
-    for(let index = 0; index < filhos.length; index++){
-        totalFilhos = totalFilhos + filhos[index]
-    }
-    let mediaFilhos = parseInt((totalFilhos / contador))
-
-    Porcemtagem = ((AcimaDe1500 / contador) * 100.0)
-
-    return alert(`1- A média salarial da população é ${mediaWage} \n 2- A média de filhos da população é ${mediaFilhos} \n 3- O maior salário foi de ${MaiorSalario} \n 4- ${Porcemtagem}% Das pessoas tem o salário acima de $1500 Reais`)
 }
